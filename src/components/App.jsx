@@ -4,7 +4,11 @@ import React from 'react';
 import './App.sass';
 
 const App = () => {
-  return <h1 className="hello">Hello, World!</h1>;
+  return (
+    <section className="todo-list">
+      <p>Hello</p>
+    </section>
+  );
 };
 
 export default hot(App);
