@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoListItem from './TodoListItem';
 
-const TodoList = ({ onDeleteTodo, todos }) => {
+const TodoList = ({ onDone, onDeleteTodo, todos }) => {
   const handleDeleteTodo = (id) => {
     onDeleteTodo(id);
   };
 
   const todoList = todos.map((todo) => (
     <TodoListItem
+      onDone={(id) => onDone(id)}
+      done={todo.done}
       id={todo.id}
       key={todo.id}
       onDeleteTodo={handleDeleteTodo}

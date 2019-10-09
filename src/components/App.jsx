@@ -15,10 +15,22 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleDone = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo,
+      ),
+    );
+  };
+
   return (
     <section className="todo-list">
       <TodoForm onAddTodo={handleAddTodo} />
-      <TodoList onDeleteTodo={handleDeleteTodo} todos={todos} />
+      <TodoList
+        onDone={handleDone}
+        onDeleteTodo={handleDeleteTodo}
+        todos={todos}
+      />
     </section>
   );
 };

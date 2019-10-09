@@ -8,6 +8,7 @@ const TodoForm = ({ onAddTodo }) => {
     const newTodo = {
       task: new FormData(event.target).get('task'),
       id: shortid.generate(),
+      done: false,
     };
     onAddTodo(newTodo);
   };
