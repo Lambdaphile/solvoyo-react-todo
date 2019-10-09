@@ -1,26 +1,24 @@
-import { hot } from 'react-hot-loader/root';
 import React, { useState } from 'react';
-
-import './App.sass';
+import { hot } from 'react-hot-loader/root';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+import './App.sass';
 
 const App = () => {
-  const [taskArray, setTaskArray] = useState([]);
+  const [todos, setTodos] = useState([]);
 
-  const handleAddTask = (task) => {
-    setTaskArray([...taskArray, task]);
+  const handleAddTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
   };
 
-  const handleDeleteTask = (element) => {
-    taskArray.splice(taskArray.indexOf(element), 1);
-    setTaskArray([...taskArray]);
+  const handleDeleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
     <section className="todo-list">
-      <TodoForm onAddTask={handleAddTask} />
-      <TodoList onDeleteTask={handleDeleteTask} tasks={taskArray} />
+      <TodoForm onAddTodo={handleAddTodo} />
+      <TodoList onDeleteTodo={handleDeleteTodo} todos={todos} />
     </section>
   );
 };

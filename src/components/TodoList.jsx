@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TodoListItem from './TodoListItem';
 
-const TodoList = ({ onDeleteTask, tasks }) => {
-  const handleDeleteTask = (e) => {
-    onDeleteTask(e.target.innerHTML);
+const TodoList = ({ onDeleteTodo, todos }) => {
+  const handleDeleteTodo = (id) => {
+    onDeleteTodo(id);
   };
 
-  const taskList = tasks.map((item) => (
-    <li key={item} onClick={handleDeleteTask}>
-      {item}
-    </li>
+  const todoList = todos.map((todo) => (
+    <TodoListItem
+      id={todo.id}
+      key={todo.id}
+      onDeleteTodo={handleDeleteTodo}
+      task={todo.task}
+    />
   ));
-  return <ul>{taskList}</ul>;
+  return <ul>{todoList}</ul>;
 };
 
 TodoList.propTypes = {
-  onDeleteTask: PropTypes.func.isRequired,
-  tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onDeleteTodo: PropTypes.func.isRequired,
+  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default TodoList;

@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
+import shortid from 'shortid';
 
-const TodoForm = ({ onAddTask }) => {
-  const handleAddTask = (e) => {
-    onAddTask(new FormData(e.target).get('task'));
+const TodoForm = ({ onAddTodo }) => {
+  const handleAddTodo = (event) => {
+    const newTodo = {
+      task: new FormData(event.target).get('task'),
+      id: shortid.generate(),
+    };
+    onAddTodo(newTodo);
   };
 
   return (
-    <Form onSubmit={handleAddTask}>
+    <Form onSubmit={handleAddTodo}>
       <Form.Group>
-        <Form.Input name="task" placeholder="Enter a task..." type="text" />
+        <Form.Input name="task" placeholder="Add a task..." type="text" />
         <Form.Button circular color="violet" inverted type="submit">
           Add Task
         </Form.Button>
@@ -20,7 +25,7 @@ const TodoForm = ({ onAddTask }) => {
 };
 
 TodoForm.propTypes = {
-  onAddTask: PropTypes.func.isRequired,
+  onAddTodo: PropTypes.func.isRequired,
 };
 
 export default TodoForm;
