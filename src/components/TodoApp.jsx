@@ -1,10 +1,12 @@
 import { hot } from 'react-hot-loader/root';
-import React, { useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 import shortid from 'shortid';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import TodoFilter from './TodoFilter';
 import './TodoApp.sass';
+
+export const TodoContext = createContext(null);
 
 const initialTodos = [
   { id: shortid.generate(), task: 'Learn React', complete: true },
@@ -63,9 +65,11 @@ const TodoApp = () => {
 
   return (
     <section className="todo">
-      <TodoForm dispatch={dispatchTodos} />
-      <TodoList dispatch={dispatchTodos} todos={filteredTodos} />
-      <TodoFilter dispatch={dispatchFilter} />
+      <TodoContext.Provider value={dispatchTodos}>
+        <TodoForm />
+        <TodoList todos={filteredTodos} />
+        <TodoFilter dispatch={dispatchFilter} />
+      </TodoContext.Provider>
     </section>
   );
 };

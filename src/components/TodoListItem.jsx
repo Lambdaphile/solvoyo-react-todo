@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
+import { TodoContext } from './TodoApp';
 
-const TodoListItem = ({ dispatch, todo }) => {
+const TodoListItem = ({ todo }) => {
+  const dispatch = useContext(TodoContext);
+
   const handleCheck = () => {
     dispatch({
       type: todo.complete ? 'undo' : 'do',
@@ -34,7 +37,6 @@ const TodoListItem = ({ dispatch, todo }) => {
 };
 
 TodoListItem.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   todo: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

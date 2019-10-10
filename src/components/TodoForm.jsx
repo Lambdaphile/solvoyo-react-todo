@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import shortid from 'shortid';
-import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
+import { TodoContext } from './TodoApp';
 
-const TodoForm = ({ dispatch }) => {
+const TodoForm = () => {
+  const dispatch = useContext(TodoContext);
   const [task, setTask] = useState('');
 
   const handleChange = (event) => setTask(event.target.value);
@@ -31,10 +32,6 @@ const TodoForm = ({ dispatch }) => {
       </Form.Group>
     </Form>
   );
-};
-
-TodoForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default TodoForm;
