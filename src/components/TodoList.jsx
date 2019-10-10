@@ -12,6 +12,7 @@ const TodoList = ({ onDone, onDeleteTodo, todos }) => {
       onDone={(id) => onDone(id)}
       done={todo.done}
       id={todo.id}
+      todo={todo}
       key={todo.id}
       onDeleteTodo={handleDeleteTodo}
       task={todo.task}
