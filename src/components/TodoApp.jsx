@@ -8,11 +8,17 @@ import './TodoApp.sass';
 
 export const TodoContext = createContext(null);
 
-const initialTodos = [
-  { id: shortid.generate(), task: 'Learn React', complete: true },
-  { id: shortid.generate(), task: 'Learn Redux', complete: false },
-  { id: shortid.generate(), task: 'Learn TypeScript', complete: false },
-];
+let initialTodos;
+if (!localStorage.getItem('solvoyo-todo')) {
+  initialTodos = [
+    { id: shortid.generate(), task: 'Learn React', complete: true },
+    { id: shortid.generate(), task: 'Learn Redux', complete: false },
+    { id: shortid.generate(), task: 'Learn TypeScript', complete: false },
+  ];
+  localStorage.setItem('solvoyo-todo', JSON.stringify(initialTodos));
+} else {
+  initialTodos = JSON.parse(localStorage.getItem('solvoyo-todo'));
+}
 
 const filterReducer = (state, action) => {
   switch (action.type) {
@@ -28,6 +34,7 @@ const filterReducer = (state, action) => {
 };
 
 const todoReducer = (state, action) => {
+  let temp;
   switch (action.type) {
     case 'do':
       return state.map((todo) => {
@@ -40,13 +47,17 @@ const todoReducer = (state, action) => {
         return todo;
       });
     case 'add':
-      return state.concat({
+      temp = state.concat({
         task: action.task,
         id: action.id,
         complete: false,
       });
+      localStorage.setItem('solvoyo-todo', JSON.stringify(temp));
+      return temp;
     case 'delete':
-      return state.filter((todo) => todo.id !== action.id);
+      temp = state.filter((todo) => todo.id !== action.id);
+      localStorage.setItem('solvoyo-todo', JSON.stringify(temp));
+      return temp;
     default:
       throw new Error();
   }
