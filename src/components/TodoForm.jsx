@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
+import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import shortid from 'shortid';
 
-const TodoForm = ({ onAddTodo }) => {
-  const handleAddTodo = (event) => {
-    const newTodo = {
-      task: new FormData(event.target).get('task'),
-      id: shortid.generate(),
-      done: false,
-    };
-    onAddTodo(newTodo);
+const TodoForm = ({ dispatch }) => {
+  const [task, setTask] = useState('');
+
+  const handleChange = (event) => setTask(event.target.value);
+
+  const handleAdd = () => {
+    if (task) {
+      dispatch({ type: 'add', task, id: shortid.generate() });
+    }
+    setTask('');
   };
 
   return (
-    <Form onSubmit={handleAddTodo}>
+    <Form onSubmit={handleAdd}>
       <Form.Group>
-        <Form.Input name="task" placeholder="Add a task..." type="text" />
+        <Form.Input
+          name="task"
+          onChange={handleChange}
+          placeholder="Add a task..."
+          type="text"
+          value={task}
+        />
         <Form.Button circular color="violet" inverted type="submit">
           Add Task
         </Form.Button>
@@ -26,7 +34,7 @@ const TodoForm = ({ onAddTodo }) => {
 };
 
 TodoForm.propTypes = {
-  onAddTodo: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default TodoForm;

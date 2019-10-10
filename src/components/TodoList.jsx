@@ -2,27 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoListItem from './TodoListItem';
 
-const TodoList = ({ onDone, onDeleteTodo, todos }) => {
-  const handleDeleteTodo = (id) => {
-    onDeleteTodo(id);
-  };
-
-  const todoList = todos.map((todo) => (
-    <TodoListItem
-      onDone={(id) => onDone(id)}
-      done={todo.done}
-      id={todo.id}
-      todo={todo}
-      key={todo.id}
-      onDeleteTodo={handleDeleteTodo}
-      task={todo.task}
-    />
-  ));
-  return <ul>{todoList}</ul>;
-};
+const TodoList = ({ dispatch, todos }) => (
+  <ul>
+    {todos.map((todo) => (
+      <TodoListItem key={todo.id} dispatch={dispatch} todo={todo} />
+    ))}
+  </ul>
+);
 
 TodoList.propTypes = {
-  onDeleteTodo: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

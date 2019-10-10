@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './granimjs/granimInstance.css';
 import './granimjs/granimInstance';
+import './granimjs/granimInstance.css';
 
-import App from './components/App';
+import TodoApp from './components/TodoApp';
 
-import 'semantic-ui-css/semantic.min.css';
 import './index.sass';
+import 'semantic-ui-css/semantic.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<TodoApp />, document.getElementById('root'));
