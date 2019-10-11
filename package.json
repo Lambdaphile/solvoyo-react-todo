@@ -1,6 +1,6 @@
 {
   "name": "react-todo-solvoyo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Solvoyo front-end challenge (react to-do app)",
   "private": true,
   "scripts": {
