@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -52,6 +52,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin(),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      template: './public/index.html',
+    }),
   ],
 };
