@@ -38,15 +38,19 @@ const todoReducer = (state, action) => {
   let temp;
   switch (action.type) {
     case 'do':
-      return state.map((todo) => {
+      temp = state.map((todo) => {
         if (todo.id === action.id) return { ...todo, complete: true };
         return todo;
       });
+      localStorage.setItem('solvoyo-todo', JSON.stringify(temp));
+      return temp;
     case 'undo':
-      return state.map((todo) => {
+      temp = state.map((todo) => {
         if (todo.id === action.id) return { ...todo, complete: false };
         return todo;
       });
+      localStorage.setItem('solvoyo-todo', JSON.stringify(temp));
+      return temp;
     case 'add':
       temp = state.concat({
         task: action.task,
