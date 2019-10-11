@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
+import './TodoFilter.sass';
 
 const TodoFilter = ({ dispatch }) => {
   const handleShowAll = () => {
@@ -16,15 +17,31 @@ const TodoFilter = ({ dispatch }) => {
   };
 
   return (
-    <div>
-      <Button onClick={handleShowAll} primary>
-        Show All
+    <div className="todo__filter">
+      <Button
+        active
+        circular
+        inverted
+        onClick={handleShowAll}
+        style={{ marginRight: '15px', width: '90px' }}
+      >
+        All
       </Button>
-      <Button onClick={handleShowDone} primary>
-        Show Done
+      <Button
+        circular
+        inverted
+        onClick={handleShowDone}
+        style={{ marginRight: '15px', width: '90px' }}
+      >
+        Done
       </Button>
-      <Button onClick={handleShowUndone} primary>
-        Show Undone
+      <Button
+        circular
+        inverted
+        onClick={handleShowUndone}
+        style={{ width: '90px' }}
+      >
+        Undone
       </Button>
     </div>
   );

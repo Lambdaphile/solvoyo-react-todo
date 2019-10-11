@@ -11,9 +11,10 @@ export const TodoContext = createContext(null);
 let initialTodos;
 if (!localStorage.getItem('solvoyo-todo')) {
   initialTodos = [
-    { id: shortid.generate(), task: 'Learn React', complete: true },
-    { id: shortid.generate(), task: 'Learn Redux', complete: false },
-    { id: shortid.generate(), task: 'Learn TypeScript', complete: false },
+    { id: shortid.generate(), task: 'Eat', complete: false },
+    { id: shortid.generate(), task: 'Sleep', complete: false },
+    { id: shortid.generate(), task: 'Code', complete: true },
+    { id: shortid.generate(), task: 'Repeat', complete: true },
   ];
   localStorage.setItem('solvoyo-todo', JSON.stringify(initialTodos));
 } else {
@@ -75,13 +76,14 @@ const TodoApp = () => {
   });
 
   return (
-    <section className="todo">
-      <TodoContext.Provider value={dispatchTodos}>
-        <TodoForm />
+    <TodoContext.Provider value={dispatchTodos}>
+      <h1 className="solvoyo">Solvoyo</h1>
+      <TodoForm />
+      <section className="todo">
         <TodoList todos={filteredTodos} />
-        <TodoFilter dispatch={dispatchFilter} />
-      </TodoContext.Provider>
-    </section>
+      </section>
+      <TodoFilter dispatch={dispatchFilter} />
+    </TodoContext.Provider>
   );
 };
 

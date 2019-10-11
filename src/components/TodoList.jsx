@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { List } from 'semantic-ui-react';
 import TodoListItem from './TodoListItem';
 
 const TodoList = ({ todos }) => (
-  <ul>
+  <List divided relaxed>
     {todos.map((todo) => (
       <TodoListItem key={todo.id} todo={todo} />
     ))}
-  </ul>
+  </List>
 );
 
 TodoList.propTypes = {
