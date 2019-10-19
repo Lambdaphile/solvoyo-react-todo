@@ -7,6 +7,6 @@ import './granimjs/granimInstance.css';
 import TodoApp from './components/TodoApp';
 
 import './index.sass';
-import 'semantic-ui-css/semantic.min.css';
+import '../public/assets/favicon.ico';
 
 ReactDOM.render(<TodoApp />, document.getElementById('root'));
