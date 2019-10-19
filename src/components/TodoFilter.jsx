@@ -19,7 +19,6 @@ const TodoFilter = ({ dispatch }) => {
   return (
     <div className="todo__filter">
       <Button
-        active
         circular
         inverted
         onClick={handleShowAll}
