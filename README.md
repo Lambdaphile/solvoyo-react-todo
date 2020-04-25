@@ -27,6 +27,3 @@ but instead I went the hard way and studied the ins and outs of ReactJS, and I b
 ### **Other API's and Tools used in this project:**
 * [shortid](https://github.com/dylang/shortid)
 * [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
-
-## Screenshot: (design is mine)... :sunglasses:
-![For Solvoyo...](https://s.put.re/gnfdp2JG.png)
