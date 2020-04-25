@@ -1,4 +1,5 @@
-# :dart: Solvoyo React To-Do App [[`preview`]](https://genesis-algorithms.github.io/solvoyo-react-todo/)
+# :dart: Solvoyo React To-Do App [[`Demo`]](https://genesis-algorithms.github.io/solvoyo-react-todo/)
+![For Solvoyo...](https://s.put.re/gnfdp2JG.png)
 > `NOTE TO THE REVIEWER OF THIS CODE:` Please take time to check my implementation and documentation 
 efforts. It's an elegant no copy-paste solution (I could complete the challenge under an hour with copy-paste),
 but instead I went the hard way and studied the ins and outs of ReactJS, and I believe I came with an unique and above average solution (in order to demonstrate my ambition as aspiring software engineer)... Thank you for your attention!
